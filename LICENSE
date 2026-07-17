@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BioThink Virtual NeuroLab simulation comparing a neural signal with an Apollo-era Moon journey." />
+  <meta name="theme-color" content="#09070a" />
+  <title>Neural Signal vs. Moon Rocket | BioThink Virtual NeuroLab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="https://www.biothink.org" target="_blank" rel="noopener noreferrer" aria-label="Visit BioThink">
+        <span class="brand-mark">BT</span>
+        <span><strong>BioThink</strong><small>Virtual NeuroLab</small></span>
+      </a>
+      <button id="soundButton" class="icon-button" type="button" aria-pressed="false" aria-label="Turn sound on">Sound off</button>
+    </header>
+
+    <section class="hero" aria-labelledby="pageTitle">
+      <p class="eyebrow">Interactive speed experiment</p>
+      <h1 id="pageTitle">Neural Signal <span>vs.</span> Moon Rocket</h1>
+      <p class="hero-copy">Stretch the human nervous system all the way to the Moon. Which signal arrives first?</p>
+    </section>
+
+    <section class="race-card" aria-label="Moon race simulation">
+      <div class="race-stage" id="raceStage">
+        <div class="space-noise" aria-hidden="true"></div>
+        <div class="earth" aria-label="Earth"><span>EARTH</span></div>
+        <div class="moon" aria-label="Moon"><span>MOON</span></div>
+
+        <div class="distance-line" aria-hidden="true">
+          <span class="distance-label">384,400 km</span>
+        </div>
+
+        <div class="lane lane-neural">
+          <div class="lane-label">
+            <span class="lane-icon">⚡</span>
+            <span><strong>Neural signal</strong><small id="neuralSpeedLabel">120 m/s</small></span>
+          </div>
+          <div class="track">
+            <div id="neuralTrail" class="trail neural-trail"></div>
+            <div id="neuralRacer" class="racer neural-racer" aria-label="Neural signal racer">
+              <span class="pulse-core"></span>
+            </div>
+          </div>
+          <output id="neuralClock" class="race-clock">0.0 days</output>
+        </div>
+
+        <div class="lane lane-rocket">
+          <div class="lane-label">
+            <span class="lane-icon">🚀</span>
+            <span><strong>Apollo journey</strong><small>about 76 hours</small></span>
+          </div>
+          <div class="track">
+            <div id="rocketTrail" class="trail rocket-trail"></div>
+            <div id="rocketRacer" class="racer rocket-racer" aria-label="Rocket racer">🚀</div>
+          </div>
+          <output id="rocketClock" class="race-clock">0.0 hours</output>
+        </div>
+
+        <div id="winnerBanner" class="winner-banner" role="status" aria-live="polite">
+          <span class="winner-kicker">Winner</span>
+          <strong>The Moon rocket arrives first.</strong>
+          <span id="winnerDetail">The neural signal is still racing.</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-row">
+          <button id="startButton" class="primary-button" type="button">Start the race</button>
+          <button id="resetButton" class="secondary-button" type="button">Reset</button>
+        </div>
+
+        <label class="range-control" for="neuralSpeed">
+          <span><strong>Neural conduction speed</strong><output id="speedOutput">120 m/s</output></span>
+          <input id="neuralSpeed" type="range" min="1" max="120" value="120" step="1" />
+          <span class="range-ends"><small>1 m/s · slow unmyelinated fiber</small><small>120 m/s · fast myelinated fiber</small></span>
+        </label>
+
+        <fieldset class="view-toggle">
+          <legend>Race view</legend>
+          <label><input type="radio" name="raceView" value="comparison" checked /> Comparison view</label>
+          <label><input type="radio" name="raceView" value="trueRatio" /> True time-ratio view</label>
+        </fieldset>
+      </div>
+    </section>
+
+    <section class="results" aria-labelledby="resultTitle">
+      <div>
+        <p class="eyebrow">What the numbers show</p>
+        <h2 id="resultTitle">Fast inside a body. Slow across space.</h2>
+      </div>
+      <div class="metric-grid">
+        <article class="metric">
+          <span>Neural signal</span>
+          <strong id="neuralResult">37.1 days</strong>
+          <small>at 120 m/s</small>
+        </article>
+        <article class="metric">
+          <span>Apollo journey</span>
+          <strong>≈ 76 hours</strong>
+          <small>launch to lunar orbit</small>
+        </article>
+        <article class="metric accent-metric">
+          <span>Rocket advantage</span>
+          <strong id="ratioResult">≈ 11.7× faster</strong>
+          <small>using average trip speed</small>
+        </article>
+      </div>
+      <p class="science-note"><strong>Key idea:</strong> neurons are optimized to move information across your body—not across 384,400 kilometers of space.</p>
+    </section>
+
+    <section class="challenge" aria-labelledby="challengeTitle">
+      <div>
+        <p class="eyebrow">Think like a scientist</p>
+        <h2 id="challengeTitle">Predict, test, explain.</h2>
+      </div>
+      <ol>
+        <li>Move the neural-speed slider.</li>
+        <li>Run the race again.</li>
+        <li>Explain why myelin changes the result.</li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>Created for <strong>BioThink Pre-Collegiate Research</strong></p>
+      <p class="source-note">Educational model. Earth–Moon distance varies; this simulation uses the average distance. Apollo journey time is represented as approximately 76 hours.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
